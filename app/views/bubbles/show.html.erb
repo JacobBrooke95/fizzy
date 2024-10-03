@@ -6,7 +6,19 @@
       <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">All Bubbles</span>
     <% end %>
-  </nav>
+
+    <% if @bubble.popped? %>
+      <%= button_to bucket_bubble_pop_path(@bubble.bucket, @bubble), method: :delete, class: "btn" do %>
+        <%= image_tag "pop.svg", aria: { hidden: true }, size: 24 %>
+        <span>Un-pop</span>
+      <% end %>
+    <% else %>
+      <%= button_to bucket_bubble_pop_path(@bubble.bucket, @bubble), class: "btn" do %>
+        <%= image_tag "pop.svg", aria: { hidden: true }, size: 24 %>
+        <span>Pop</span>
+      <% end %>
+    <% end %>
+    </nav>
 <% end %>
 
 <div class="bubble__perma flex justify-center center margin-block-end-double">
@@ -16,12 +28,4 @@
 <section class="comments align-center center borderless margin flex flex-column gap-half" style="--bubble-color: <%= @bubble.color %>;">
   <%= render_comments_and_boosts(@bubble) %>
   <%= render "comments/new", bubble: @bubble %>
-</section>
-
-<section>
-  <% if @bubble.popped? %>
-    <%= button_to "Restore", bucket_bubble_pop_path(@bubble.bucket, @bubble), method: :delete, class: "btn" %>
-  <% else %>
-    <%= button_to "Pop", bucket_bubble_pop_path(@bubble.bucket, @bubble), class: "btn" %>
-  <% end %>
 </section>
