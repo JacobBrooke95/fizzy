@@ -1,9 +1,9 @@
 .comments {
   --avatar-size: 2.33em;
-  --comment-padding-block: 1.2em;
-  --comment-padding-inline: 1.5em;
+  --comment-padding-block: 1lh;
+  --comment-padding-inline: 2ch;
 
-  max-inline-size: 70ch;
+  max-inline-size: 80ch;
   row-gap: var(--comment-padding-block);
 
   > :first-child {
@@ -39,7 +39,6 @@
   padding: var(--comment-padding-block) var(--comment-padding-inline);
 
   .comment--mine & {
-    background-color: var(--color-selected);
     margin-inline: var(--avatar-size) 0;
   }
 
@@ -74,7 +73,7 @@
 
 .event-summary {
   font-weight: 600;
+  gap: 0.5ch;
   margin-block: calc(var(--comment-padding-block) * -1);
   padding: calc(var(--comment-padding-block) * 0.5) var(--comment-padding-inline);
-  gap: 0.5ch;
 }
