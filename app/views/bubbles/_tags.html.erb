@@ -1,16 +1,4 @@
-<% bubble.tags.last(3).each do |tag| %>
-  <div class="bubble__bubble bubble__meta bubble__tag">
-    <details name="assignments" class="position-relative" data-controller="expandable" data-action="focusout->expandable#closeOnFocusOutside">
-      <summary class="btn btn--plain fill-transparent" style="--btn-color: <%= bubble.color %>">
-        <%= tag.hashtag %>
-      </summary>
-
-      <%= form_with url: bucket_bubble_tagging_swaps_path(bubble.bucket, bubble), data: { controller: "form" } do |form| %>
-        <%= form.hidden_field :outgoing_tag_id, value: tag.id %>
-        <%= form.combobox :incoming_tag_id, bucket_bubble_tags_path(bubble.bucket, bubble),
-              id: dom_id(tag, :tagging), required: true, preload: true, name_when_new: "incoming_tag_title",
-              data: { controller: "autofocus", action: "hw-combobox:selection->form#submit" } %>
-      <% end %>
-    </details>
-  </div>
+<% bubble.tags.each do |tag| %>
+  <%= link_to tag.hashtag, bubbles_path(@filter.to_params.merge(tag_ids: [ tag.id ])),
+        class: "btn btn--plain fill-transparent", style: "color: #{bubble.color}" %>
 <% end %>

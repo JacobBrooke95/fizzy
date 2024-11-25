@@ -1,17 +1,8 @@
 <% bubble.assignees.each do |assignee| %>
-  <div class="bubble__bubble bubble__meta bubble__assignee">
-    <details name="assignments" class="position-relative" data-controller="expandable" data-action="focusout->expandable#closeOnFocusOutside">
-      <summary class="btn btn--plain fill-transparent">
-        <%= avatar_image_tag assignee, loading: :lazy, class: "avatar flex-item-no-shrink" %>
-        <span class="for-screen-reader">Assign to…</span>
-      </summary>
-
-      <%= form_with url: bucket_bubble_assignment_swaps_path(bubble.bucket, bubble), data: { controller: "form" } do |form| %>
-        <%= form.hidden_field :outgoing_assignee_id, value: assignee.id %>
-        <%= form.combobox :incoming_assignee_id, bucket_bubble_users_path(bubble.bucket, bubble),
-              id: dom_id(assignee, :assignment), required: true, preload: true,
-              data: { controller: "autofocus", action: "hw-combobox:selection->form#submit" } %>
-      <% end %>
-    </details>
-  </div>
+  <article class="bubble__bubble bubble__meta bubble__assignee">
+    <div class="btn btn--plain position-relative fill-transparent">
+      <span class="assignee__name"><%= assignee.name %></span>
+      <%= avatar_image_tag assignee, loading: :lazy, class: "avatar flex-item-no-shrink" %>
+    </div>
+  </article>
 <% end %>

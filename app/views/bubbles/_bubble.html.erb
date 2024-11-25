@@ -4,11 +4,17 @@
     data-controller="animation upload-preview"
     data-animation-play-class="bubble--wobble" data-animation-play-on-load-value="true" data-action="mouseover->animation#play">
 
-    <h1 class="bubble__title">
-      <%= turbo_frame_tag bubble, :edit do %>
-        <%= link_to bubble.title, edit_bucket_bubble_path(bubble.bucket, bubble), class: "txt-undecorated" %>
-      <% end %>
-    </h1>
+    <div>
+      <h1 class="bubble__title">
+        <%= turbo_frame_tag bubble, :edit do %>
+          <%= link_to bubble.title, edit_bucket_bubble_path(bubble.bucket, bubble), class: "txt-undecorated" %>
+        <% end %>
+      </h1>
+
+      <div class="bubble__tags flex align-end justify-center gap-half">
+        <%= render "bubbles/tags", bubble: bubble %>
+      </div>
+    </div>
 
     <div class="bubble__shape"></div>
 
@@ -20,6 +26,5 @@
     <%= render "bubbles/boosts", bubble: bubble %>
     <%= render "bubbles/date", bubble: bubble %>
     <%= render "bubbles/image", bubble: bubble %>
-    <%= render "bubbles/tags", bubble: bubble %>
   </div>
 <% end %>

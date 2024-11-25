@@ -7,11 +7,8 @@
       <strong class="bubble__title-text flex--inline gap-half overflow-ellipsis"><%= bubble.title %></strong>
     <% end %>
 
-    <div class="flex align-end gap-half">
-      <% bubble.tags.each do |tag| %>
-        <%= link_to tag.hashtag, bubbles_path(@filter.to_params.merge(tag_ids: [ tag.id ])),
-              class: "btn btn--plain txt-small fill-transparent", style: "color: #{bubble.color}" %>
-      <% end %>
+    <div class="flex align-end gap-half txt-small">
+      <%= render "bubbles/tags", bubble: bubble %>
     </div>
   </div>
 
@@ -30,6 +27,4 @@
       <strong>DUE:</strong> <%= bubble.due_on.strftime("%b %d") %>
     </time>
   <% end %>
-
-
 </li>
