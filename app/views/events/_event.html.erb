@@ -15,7 +15,7 @@
     <strong style="font-size: 1.1em;"><%= bubble.title %></strong>
     <span class="flex align-center gap-half">
       <% if event_column(event) == 1 %>
-      <span><%= image_tag "#{event_action_icon(event)}.svg", aria: { hidden: true }, size: 12 %></span>
+      <span><%= image_tag "#{event_action_icon(event)}.svg", aria: { hidden: true }, size: 12, class: "colorize--black" %></span>
       <% end %>
       <span><%= event_action_sentence(event) %></span>
     </span>
