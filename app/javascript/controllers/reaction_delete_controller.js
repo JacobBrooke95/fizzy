@@ -6,14 +6,15 @@ export default class extends Controller {
   static values = { reacterId: Number }
 
   connect() {
-    if (this.#currentUserIsreacter) {
+    if (this.#currentUserIsReacter) {
       this.#setAccessibleAttributes()
     }
   }
 
   reveal() {
-    if (this.#currentUserIsreacter) {
+    if (this.#currentUserIsReacter) {
       this.element.classList.toggle(this.revealClass)
+      this.contentTarget.ariaExpanded = this.element.classList.contains(this.revealClass)
       this.buttonTarget.focus()
     }
   }
@@ -23,11 +24,12 @@ export default class extends Controller {
   }
 
   #setAccessibleAttributes() {
-    this.contentTarget.setAttribute('tabindex', '0')
-    this.contentTarget.setAttribute('aria-describedby', 'delete_reaction_accessible_label')
+    this.contentTarget.role = "button"
+    this.contentTarget.tabIndex = 0
+    this.contentTarget.ariaExpanded = false
   }
 
-  get #currentUserIsreacter() {
+  get #currentUserIsReacter() {
     return Current.user.id === this.reacterIdValue
   }
 }

@@ -10,8 +10,10 @@ module AvatarsHelper
     AVATAR_COLORS[Zlib.crc32(user.to_param) % AVATAR_COLORS.size]
   end
 
-  def avatar_tag(user, **options)
-    link_to user_path(user), title: user.name, class: "btn avatar", data: { turbo_frame: "_top" } do
+  def avatar_tag(user, hidden_for_screen_reader: false, **options)
+    link_to user_path(user), title: user.name, class: "btn avatar", data: { turbo_frame: "_top" },
+        aria: { hidden: hidden_for_screen_reader, label: user.name },
+        tabindex: hidden_for_screen_reader ? -1 : nil do
       avatar_image_tag(user, **options)
     end
   end

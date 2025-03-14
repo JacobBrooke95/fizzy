@@ -5,14 +5,16 @@
         data-reaction-delete-reacter-id-value="<%= reaction.reacter.id %>"
         data-controller="reaction-delete" data-reaction-delete-perform-class="reaction--deleting" 
         data-reaction-delete-reveal-class="expanded" data-reaction-delete-reacter-id-value="<%= reaction.reacter.id %>">
-    <figure class="reaction__avatar margin-none flex-item-no-shrink">
-      <%= avatar_tag reaction.reacter, aria: { label: "#{reaction.reacter.name} reacted #{reaction.content}" }, loading: :lazy %>
+    <figure class="reaction__avatar margin-none flex-item-no-shrink" aria-hidden="true">
+      <%= avatar_tag reaction.reacter, hidden_for_screen_reader: true, loading: :lazy %>
     </figure>
 
-    <%= tag.span reaction.content, role: "button",
-          class: [ "txt-small", { "txt-medium": reaction.all_emoji? } ],
-          data: { action: "click->reaction-delete#reveal keydown.enter->reaction-delete#reveal:prevent", reaction_delete_target: "content" } %>
-    
+    <%= tag.span reaction.content, class: [ "txt-small", { "txt-medium": reaction.all_emoji? } ],
+          data: {
+            action: "click->reaction-delete#reveal keydown.enter->reaction-delete#reveal:prevent",
+            reaction_delete_target: "content" } do %>
+      <span class="for-screen-reader"><%= "#{reaction.reacter.name} reacted #{reaction.content}" %></span>
+    <% end %>
     <%= button_to bucket_bubble_comment_reaction_path(comment.bubble.bucket, comment.bubble, comment, reaction),
           method: :delete,
           class: "btn btn--negative flex-item-justify-end reaction__delete",
@@ -21,5 +23,4 @@
       <span class="for-screen-reader">Delete this reaction</span>
     <% end %>
   </div>
-  <span id="delete_reaction_accessible_label" class="for-screen-reader">Press enter to delete this reaction</span>
 <% end %> 
