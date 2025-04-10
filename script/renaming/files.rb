@@ -9,7 +9,7 @@ EXCLUDED_DIRS = [ "db", ".git", "script/renaming" ].freeze
 RENAMES = {
   "bubble" => "card",
   "poppable" => "closeable",
-  "popped" => "closed",
+  "closed" => "closed",
   "pop" => "closure",
   "bucket" => "collection"
 }.freeze

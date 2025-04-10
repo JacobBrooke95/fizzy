@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :cards do
+    resources :previews
+  end
+
   resources :cards do
     scope module: :cards do
       resource :engagement

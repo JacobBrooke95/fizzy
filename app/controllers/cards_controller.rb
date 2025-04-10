@@ -1,17 +1,17 @@
+require "ostruct"
+
 class CardsController < ApplicationController
-  include CollectionScoped
+  include CollectionScoped, FilterScoped
 
   skip_before_action :set_collection, only: :index
-
-  before_action :set_filter, only: :index
   before_action :set_card, only: %i[ show edit update destroy ]
 
-  RECENTLY_CLOSED_LIMIT = 100
+  PAGE_SIZE = 50
 
   def index
-    @considering_cards = @filter.cards.considering.load_async
-    @doing_cards = @filter.cards.doing.load_async
-    @closed_cards = @filter.with(indexed_by: "closed").cards.recently_closed_first.limit(RECENTLY_CLOSED_LIMIT).load_async
+    @considering = page_and_filter_for @filter.with(engagement_status: "considering"), per_page: PAGE_SIZE
+    @doing = page_and_filter_for @filter.with(engagement_status: "doing"), per_page: PAGE_SIZE
+    @closed = page_and_filter_for @filter.with(indexed_by: "closed"), per_page: PAGE_SIZE
   end
 
   def create
@@ -35,14 +35,14 @@ class CardsController < ApplicationController
   end
 
   private
-    DEFAULT_PARAMS = { indexed_by: "newest" }
-
-    def set_filter
-      @filter = Current.user.filters.from_params params.reverse_merge(**DEFAULT_PARAMS).permit(*Filter::PERMITTED_PARAMS)
-    end
-
     def set_card
       @card = @collection.cards.find params[:id]
+    end
+
+    def page_and_filter_for(filter, per_page: nil)
+      OpenStruct.new \
+        page: GearedPagination::Recordset.new(filter.cards, per_page:).page(1),
+        filter: filter
     end
 
     def card_params

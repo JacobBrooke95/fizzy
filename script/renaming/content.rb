@@ -5,7 +5,7 @@ require "active_support/core_ext/string" # for camelize
 
 RENAME_RULES = {
   "bubble" => "card",
-  "popped" => "closed",
+  "closed" => "closed",
   "poppable" => "closeable",
   "pop" => "closure",
   "bucket" => "collection"

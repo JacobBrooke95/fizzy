@@ -7,8 +7,8 @@
 <% end %>
 
 <div class="cards--columns">
-  <%= render "cards/index/engagement/considering", cards: @considering_cards %>
-  <%= render "cards/index/engagement/doing", cards: @doing_cards, filter: @filter %>
+  <%= render "cards/index/engagement/considering", **@considering.to_h %>
+  <%= render "cards/index/engagement/doing", **@doing.to_h %>
 </div>
 
-<%= render "cards/index/engagement/closed", cards: @closed_cards, filter: @filter %>
+<%= render "cards/index/engagement/closed", **@closed.to_h %>

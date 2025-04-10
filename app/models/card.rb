@@ -29,6 +29,13 @@ class Card < ApplicationRecord
     end
   end
 
+  scope :by_engagement_status, ->(status) do
+    case status.to_s
+    when "considering"    then considering
+    when "doing"          then doing
+    end
+  end
+
   def cache_key
     [ super, collection&.name ].compact.join("/")
   end
