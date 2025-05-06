@@ -21,14 +21,6 @@ class Command::Parser
   end
 
   private
-    def search(string)
-      if card = user.accessible_cards.find_by_id(string)
-        Command::GoToCard.new(card_id: card.id)
-      else
-        Command::Search.new(query: string)
-      end
-    end
-
     def assignees_from(strings)
       Array(strings).filter_map do |string|
         assignee_from(string)
@@ -40,5 +32,13 @@ class Command::Parser
     def assignee_from(string)
       string_without_at = string.delete_prefix("@")
       User.all.find { |user| user.mentionable_handles.include?(string_without_at) }
+    end
+
+    def search(string)
+      if card = user.accessible_cards.find_by_id(string)
+        Command::GoToCard.new(card_id: card.id)
+      else
+        Command::Search.new(query: string)
+      end
     end
 end
