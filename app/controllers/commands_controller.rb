@@ -36,6 +36,8 @@ class CommandsController < ApplicationController
       case result
       when Command::Result::Redirection
         redirect_to result.url
+      when Command::Result::ChatResponse
+        render turbo_stream: turbo_stream.append("chat-responses", partial: "commands/chat/response", locals: { content: result.content })
       else
         redirect_back_or_to root_path
       end

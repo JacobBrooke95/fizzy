@@ -60,7 +60,7 @@ class Command::Parser
       elsif card = single_card_from(string)
         Command::GoToCard.new(card_id: card.id)
       else
-        Command::Search.new(query: string, params: filter.as_params)
+        Command::ChatQuery.new(query: string, params: filter.as_params)
       end
     end
 
