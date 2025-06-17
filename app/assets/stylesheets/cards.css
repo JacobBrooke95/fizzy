@@ -344,13 +344,18 @@
       --card-color: var(--color-card-complete) !important;
     }
 
+    .card__body {
+      padding-block-end: 0;
+    }
+
     .card__collection {
       font-size: var(--text-xx-small);
       padding-block: 0.5ch;
     }
 
-    .card__body {
-      padding-block-end: 0;
+    .card__header {
+      margin-inline: calc(-1 * var(--card-padding-inline)) calc(-1 * var(--inline-space-half));
+      max-inline-size: unset;
     }
 
     .card__notification-body {
@@ -378,8 +383,7 @@
     --btn-size: 1.25em;
     --hover-size: 0;
 
-    inset: 0 0 auto auto;
-    position: absolute;
+    position: relative;
     z-index: 1;
 
     &:before,

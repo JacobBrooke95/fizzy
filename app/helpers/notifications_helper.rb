@@ -28,7 +28,6 @@ module NotificationsHelper
           style: { "--card-color:": notification.card.color },
           &)
       )
-      concat(notification_mark_read_button(notification))
     end
   end
 

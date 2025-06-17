@@ -13,6 +13,14 @@
       }
     }
 
+    .card__header {
+      column-gap: var(--inline-space-half);
+    }
+
+    .card__notification-unread-indicator {
+      font-size: var(--text-small);
+    }
+
     &:has(.card--notification) {
       .notifications-list__empty-message {
         display: none;
