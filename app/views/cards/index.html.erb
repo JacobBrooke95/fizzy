@@ -21,8 +21,8 @@
       <% end %>
     <% end %>
   </div>
-  <h1 class="header__title" style="view-transistion-name: card-collection-title">
-    <span class="overflow-ellipsis"><%= filter_title @filter %></span>
+  <h1 class="header__title overflow-ellipsis" style="view-transistion-name: card-collection-title">
+    <%= filter_title @filter %>
   </h1>
   <div class="header__actions header__actions--end">
     <% if collection = @filter.single_collection %>
