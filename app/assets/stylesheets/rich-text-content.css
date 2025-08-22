@@ -23,7 +23,7 @@
     :where(p, ul, ol, dl, blockquote, figure, .attachment) {
       margin-block: var(--block-margin);
 
-      &:not(lexical-editor &) {
+      &:not(lexxy-editor &) {
         overflow-wrap: break-word;
         text-wrap: pretty;
       }
@@ -362,7 +362,7 @@
        0.5ch 0 0 var(--attachment-bg-color);
     border-radius: 99rem;
 
-    lexical-editor & {
+    lexxy-editor & {
       cursor: pointer;
     }
 

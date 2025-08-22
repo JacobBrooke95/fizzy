@@ -1,5 +1,5 @@
 @layer components {
-  lexical-editor {
+  lexxy-editor {
     display: block;
     position: relative;
     overflow: visible;
@@ -18,11 +18,11 @@
       }
     }
 
-    /* Lexical still uses the `lexical-editor--empty` class if you have a list
+    /* Lexical still uses the `lexxy-editor--empty` class if you have a list
        started with no other characters. Here, we won't show the placeholder if
        you've clicked the List button in the toolbar. */
-    &.lexical-editor--empty {
-      .lexical-editor__content:not(:has(ul, ol))::before {
+    &.lexxy-editor--empty {
+      .lexxy-editor__content:not(:has(ul, ol))::before {
         content: attr(placeholder);
         color: currentColor;
         cursor: text;
@@ -40,7 +40,7 @@
     }
   }
 
-  .lexical-dialog-actions {
+  .lexxy-dialog-actions {
     display: flex;
     font-size: var(--text-x-small);
     flex: 1 1 0%;
@@ -65,7 +65,7 @@
     }
   }
 
-  .lexical-editor__content {
+  .lexxy-editor__content {
     margin: var(--block-space-half) 0;
     min-block-size: calc(7lh + var(--block-space));
     outline: 0;
@@ -81,13 +81,13 @@
     }
   }
 
-  .lexical-editor--drag-over {
+  .lexxy-editor--drag-over {
     background-color: var(--color-selected);
     border-radius: 4px;
     outline: 2px dashed var(--color-selected-dark);
   }
 
-  lexical-toolbar {
+  lexxy-toolbar {
     background-color: inherit;
     border-block-end: 1px solid var(--color-ink-light);
     color: currentColor;
@@ -152,7 +152,7 @@
     }
   }
 
-  .lexical-code-language-picker {
+  .lexxy-code-language-picker {
     /* Based on .input, .input--select */
     -webkit-appearance: none;
     appearance: none;
@@ -185,21 +185,21 @@
   /* Prompt
   /* ------------------------------------------------------------------------ */
 
-  .lexical-prompt-menu {
-    --lexical-prompt-avatar-size: 24px;
-    --lexical-prompt-min-width: 20ch;
-    --lexical-prompt-padding: 0.5ch;
+  .lexxy-prompt-menu {
+    --lexxy-prompt-avatar-size: 24px;
+    --lexxy-prompt-min-width: 20ch;
+    --lexxy-prompt-padding: 0.5ch;
 
     background-color: var(--color-canvas);
-    border-radius: calc(var(--lexical-prompt-padding) * 2);
+    border-radius: calc(var(--lexxy-prompt-padding) * 2);
     box-shadow: var(--shadow);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: var(--text-small);
     list-style: none;
     margin: 0;
-    min-inline-size: var(--lexical-prompt-min-width);
-    padding: var(--lexical-prompt-padding);
+    min-inline-size: var(--lexxy-prompt-min-width);
+    padding: var(--lexxy-prompt-padding);
     visibility: hidden;
     z-index: var(--z-popup);
 
@@ -207,17 +207,17 @@
     overflow: scroll;
   }
 
-  .lexical-prompt-menu--visible {
+  .lexxy-prompt-menu--visible {
     visibility: initial;
   }
 
-  .lexical-prompt-menu__item {
+  .lexxy-prompt-menu__item {
     align-items: center;
     border-radius: 0.5ch;
     cursor: pointer;
     display: flex;
-    gap: var(--lexical-prompt-padding);
-    padding: var(--lexical-prompt-padding);
+    gap: var(--lexxy-prompt-padding);
+    padding: var(--lexxy-prompt-padding);
     white-space: nowrap;
 
     &:hover {
@@ -229,10 +229,10 @@
     }
 
     img {
-      block-size: var(--lexical-prompt-avatar-size);
+      block-size: var(--lexxy-prompt-avatar-size);
       border-radius: 50%;
       flex-shrink: 0;
-      inline-size: var(--lexical-prompt-avatar-size);
+      inline-size: var(--lexxy-prompt-avatar-size);
       margin: 0;
     }
 
@@ -249,8 +249,8 @@
   }
 
   /* Empty state */
-  .lexical-prompt-menu__item--empty {
+  .lexxy-prompt-menu__item--empty {
     color: var(--color-ink-medium);
-    padding: var(--lexical-prompt-padding);
+    padding: var(--lexxy-prompt-padding);
   }
 }
