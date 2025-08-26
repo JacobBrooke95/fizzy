@@ -13,6 +13,10 @@ class Conversation::Message < ApplicationRecord
 
   scope :ordered, -> { order(created_at: :asc, id: :asc) }
 
+  def cost
+    cost_microcents && Ai::Quota::Money.new(cost_microcents)
+  end
+
   def all_emoji?
     content.to_plain_text.all_emoji?
   end

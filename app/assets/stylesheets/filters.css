@@ -10,6 +10,7 @@
 
     .btn {
       --btn-border-color: var(--color-ink-medium);
+      --input-background: var(--color-canvas);
     }
   }
 

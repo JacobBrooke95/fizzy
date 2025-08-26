@@ -11,7 +11,7 @@ module HotkeysHelper
         else
           key
         end
-      }.join("+")
+      }.join()
     else
       hotkey.split(",").first if hotkey
     end

@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import { highlightAll } from "actiontext-lexical"
+import { highlightAll } from "lexxy"
 
 export default class extends Controller {
   connect() {

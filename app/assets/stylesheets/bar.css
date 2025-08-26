@@ -41,12 +41,18 @@
   }
 
   .bar__placeholder {
+    color: var(--color-ink-medium);
     font-weight: 500;
-    opacity: 0.66;
 
     .btn--plain {
-      font-weight: 500;
+      color: inherit;
+      font-weight: inherit;
+      padding-inline: 1ch;
       white-space: nowrap;
+
+      &:hover {
+        color: oklch(var(--lch-blue-dark));
+      }
     }
   }
 }

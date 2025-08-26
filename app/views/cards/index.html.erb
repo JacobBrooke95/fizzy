@@ -13,8 +13,7 @@
 <% end %>
 
 <header class="header" style="--header-actions-width: 7rem;">
-  <%= render "filters/menu/add_card_button", user_filtering: @user_filtering %>
-
+  <div class="header__actions header__actions--start"></div>
   <h1 class="header__title overflow-ellipsis" style="view-transistion-name: card-collection-title">
     <%= @user_filtering.selected_collections_label %>
   </h1>

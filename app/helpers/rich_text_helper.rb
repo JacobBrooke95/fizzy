@@ -1,22 +1,22 @@
 module RichTextHelper
   def mentions_prompt(collection)
-    content_tag "lexical-prompt", "", trigger: "@", src: prompts_collection_users_path(collection), name: "mention"
+    content_tag "lexxy-prompt", "", trigger: "@", src: prompts_collection_users_path(collection), name: "mention"
   end
 
   def global_mentions_prompt
-    content_tag "lexical-prompt", "", trigger: "@", src: prompts_users_path, name: "mention"
+    content_tag "lexxy-prompt", "", trigger: "@", src: prompts_users_path, name: "mention"
   end
 
   def tags_prompt
-    content_tag "lexical-prompt", "", trigger: "#", src: prompts_tags_path, name: "tag"
+    content_tag "lexxy-prompt", "", trigger: "#", src: prompts_tags_path, name: "tag"
   end
 
   def cards_prompt
-    content_tag "lexical-prompt", "", trigger: "#", src: prompts_cards_path, name: "card", "insert-editable-text": true, "remote-filtering": true, "supports-space-in-searches": true
+    content_tag "lexxy-prompt", "", trigger: "#", src: prompts_cards_path, name: "card", "insert-editable-text": true, "remote-filtering": true, "supports-space-in-searches": true
   end
 
   def code_language_picker
-    content_tag "lexical-code-language-picker"
+    content_tag "lexxy-code-language-picker"
   end
 
   def general_prompts(collection)

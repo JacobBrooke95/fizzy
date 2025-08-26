@@ -6,7 +6,7 @@
         bar_search_url_value: search_path,
         bar_ask_url_value: conversation_path
       } do %>
-  <div class="flex justify-center gap bar__placeholder" data-bar-target="buttonsContainer">
+  <div class="flex justify-center bar__placeholder" data-bar-target="buttonsContainer">
     <%= tag.button \
           class: "btn btn--plain",
           data: {
@@ -14,7 +14,7 @@
             action: "
             bar#search
             keydown.meta+k@document->hotkey#click keydown.ctrl+k@document->hotkey#click" } do %>
-      <span>Search [<%= hotkey_label(["ctrl", "K"]) %>]</span>
+      <span>Search (<%= hotkey_label(["ctrl", "K"]) %>)</span>
     <% end %>
     <span>or</span>
     <%= tag.button \
@@ -24,7 +24,7 @@
             action: "
             bar#ask
             keydown.meta+a@document->hotkey#click keydown.ctrl+a@document->hotkey#click" } do %>
-      <span>Ask [<%= hotkey_label(["ctrl", "A"]) %>]</span>
+      <span>Ask (<%= hotkey_label(["ctrl", "A"]) %>)</span>
     <% end %>
   </div>
 
@@ -42,7 +42,7 @@
     data: {
       controller: "dialog",
       dialog_target: "dialog",
-      action: "keydown.esc->bar#reset:stop" } do %>
+      action: "keydown.esc@document->bar#reset:stop" } do %>
     <%= turbo_frame_tag "bar-content", data: { bar_target: "turboFrame" } %>
   <% end %>
 <% end %>

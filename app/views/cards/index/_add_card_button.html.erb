@@ -1,0 +1,8 @@
+<% if collection = user_filtering.collections.first %>
+  <div class="card card--new">
+    <%= button_to collection_cards_path(collection), method: :post, class: "btn" do %>
+      <%= icon_tag "add" %>
+      <span>Add a card</span>
+    <% end %>
+  </div>
+<% end %>

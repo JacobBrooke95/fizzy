@@ -1,13 +1,6 @@
 <section id="considering-cards" class="cards cards--considering" data-drag-and-drop-target="container"  data-drop-target="considering">
   <div class="cards__decoration"></div>
-  <% if collection = @filter.single_collection || Current.user.collections.first %>
-    <div class="card card--new">
-      <%= button_to collection_cards_path(collection), method: :post, class: "btn" do %>
-        <%= icon_tag "add" %>
-        <span>Add a card</span>
-    </div>
-    <% end %>
-  <% end %>
+  <%= render "cards/index/add_card_button", user_filtering: @user_filtering %>
   <% if page.used? %>
     <%= render partial: "cards/display/preview", collection: page.records, as: :card, locals: { draggable: true }, cached: true %>
 
