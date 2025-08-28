@@ -56,6 +56,7 @@ Rails.application.routes.draw do
 
   namespace :notifications do
     resource :settings
+    resource :unsubscribe
   end
 
   resources :notifications do
