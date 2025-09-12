@@ -60,13 +60,11 @@
         cursor: pointer;
         opacity: 0;
       }
+    }
 
-      &:focus,
-      &:focus-visible {
-        .input--file:has(&) {
-          outline: 0.15rem solid var(--color-selected-dark);
-        }
-      }
+    &:has(input[type="file"]:focus),
+    &:has(input[type="file"]:focus-visible) {
+      outline: 0.15rem solid var(--color-selected-dark);
     }
 
     &:is(.avatar) {

@@ -308,11 +308,11 @@
     position: absolute;
     rotate: 5deg;
     transform-origin: top right;
+  }
 
-    .card:has(&),
-    .card-perma:has(&) {
-      --card-color: var(--color-card-complete) !important;
-    }
+  .card:has(.card__closed),
+  .card-perma:has(.card__closed) {
+    --card-color: var(--color-card-complete) !important;
   }
 
   .card__closed-title {

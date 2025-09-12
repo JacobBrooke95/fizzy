@@ -31,14 +31,14 @@
       --panel-padding: var(--block-space) var(--block-space) 0 var(--block-space);
     }
 
-    #header:has(&) {
-      position: relative;
-      z-index: var(--z-nav);
-    }
-
     .card & {
       inline-size: 260px;
     }
+  }
+
+  #header:has(.popup) {
+    position: relative;
+    z-index: var(--z-nav);
   }
 
   .popup__footer {

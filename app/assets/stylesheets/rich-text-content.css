@@ -50,11 +50,12 @@
       margin-inline: auto;
       max-block-size: 32rem;
       object-fit: contain;
+    }
 
-      /* Links should hug media contained within */
-      a:has(&) {
-        display: inline-block;
-      }
+    /* Links should hug media contained within */
+    a:has(img),
+    a:has(video) {
+      display: inline-block;
     }
 
     /* Avoid extra space due to empty paragraphs */

@@ -3,11 +3,14 @@
     position: relative;
     view-transition-name: "filters";
     z-index: var(--z-popup);
+  }
 
-    #header:has(&) {
-      position: relative;
-      z-index: var(--z-popup);
-    }
+  #header:has(.filters) {
+    position: relative;
+    z-index: var(--z-popup);
+  }
+
+  .filters {
 
     .btn {
       --btn-border-color: var(--color-ink-medium);
