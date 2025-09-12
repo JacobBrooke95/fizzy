@@ -14,7 +14,7 @@
     </button>
 
     <%= filter_dialog "Assigned to…" do %>
-      <strong class="popup__title txt-nowrap">Assigned to…</strong>
+      <strong class="popup__title">Assigned to…</strong>
 
       <% if User.active.many? %>
         <%= text_field_tag :search, nil, placeholder: "Filter…", class: "input input--transparent txt-small", autofocus: true,

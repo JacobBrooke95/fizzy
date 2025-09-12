@@ -1,11 +1,12 @@
-<%= form_with url: user_filtering.self_filter_path, method: :get, class: "display-contents",
-      data: { controller: "form" } do |form| %>
-  <% if user_filtering.collections.any? %>
+<% if user_filtering.collections.any? %>
+  <details open>
+    <summary class="popup__group-title">Collections</summary>
 
-    <ul class="popup__list">
-      <li class="popup__group-title">Collections</li>
-      <%= render "filters/menu/collections/all_option", form: form, user_filtering: user_filtering %>
-      <%= render partial: "filters/menu/collections/collection", collection: user_filtering.collections, as: :collection, locals: { form: form, user_filtering: user_filtering } %>
-    </ul>
-  <% end %>
+    <%= form_with url: user_filtering.self_filter_path, method: :get, class: "display-contents", data: { controller: "form" } do |form| %>
+      <ul class="popup__list">
+        <%= render "filters/menu/collections/all_option", form: form, user_filtering: user_filtering %>
+        <%= render partial: "filters/menu/collections/collection", collection: user_filtering.collections, as: :collection, locals: { form: form, user_filtering: user_filtering } %>
+      </ul>
+    <% end %>
+  </details>
 <% end %>

@@ -14,7 +14,7 @@
     </button>
 
     <%= filter_dialog "Closed by…" do %>
-      <strong class="popup__title txt-nowrap">Closed by…</strong>
+      <strong class="popup__title">Closed by…</strong>
 
       <% if user_filtering.users.many? %>
         <%= text_field_tag :search, nil, placeholder: "Filter…", class: "input input--transparent txt-small", autofocus: true,

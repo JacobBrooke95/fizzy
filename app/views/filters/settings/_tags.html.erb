@@ -13,7 +13,7 @@
     </button>
 
     <%= filter_dialog "Tagged…" do %>
-      <strong class="popup__title txt-nowrap">Tagged…</strong>
+      <strong class="popup__title">Tagged…</strong>
 
       <% if user_filtering.tags.many? %>
         <%= text_field_tag :search, nil, placeholder: "Filter…", class: "input input--transparent txt-small", autofocus: true,
