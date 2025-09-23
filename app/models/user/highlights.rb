@@ -27,7 +27,7 @@ module User::Highlights
 
   private
     def highlights_starts_at(date = Time.current)
-      date = date - 1.day if date.sunday?
+      date = date.in_time_zone(timezone)
       date.beginning_of_week(:sunday)
     end
 end

@@ -3,9 +3,9 @@
     <span class="events__day-time min-width max-width">
       <span class="overflow-ellipsis">
         <span>Weekly Highlights for</span>
-        <%= local_datetime_tag day_timeline.week_starts_at, style: :shortdate %>
+        <%= local_datetime_tag day_timeline.week_starts_at - 1.week, style: :shortdate %>
         –
-        <%= local_datetime_tag day_timeline.week_ends_at - 1.day, style: :shortdate %>
+        <%= local_datetime_tag day_timeline.week_ends_at - 1.week - 1.day, style: :shortdate %>
       </span>
     </span>
   </h2>
