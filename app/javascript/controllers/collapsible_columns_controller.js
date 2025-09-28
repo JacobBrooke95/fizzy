@@ -18,19 +18,16 @@ export default class extends Controller {
   }
 
   #expandOnly(clickedColumn) {
-    const wasCollapsed = this.#isCollapsed(clickedColumn)
-
-    this.columnTargets.forEach(column => {
-      this.#collapse(column)
-    })
-
-    if (wasCollapsed) {
-      this.#expand(clickedColumn)
-    }
+    this.#collapseAllExcept(clickedColumn);
+    this.#expand(clickedColumn)
   }
 
-  #isCollapsed(column) {
-    return column.classList.contains(this.collapsedClass)
+  #collapseAllExcept(clickedColumn) {
+    this.columnTargets.forEach(column => {
+      if (column !== clickedColumn) {
+        this.#collapse(column)
+      }
+    })
   }
 
   #collapse(column) {
