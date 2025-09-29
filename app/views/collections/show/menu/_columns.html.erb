@@ -2,7 +2,7 @@
   <button class="btn btn--circle txt-x-small borderless" data-action="click->dialog#open:stop" aria-label="Add a new column, etc.">
     <%= icon_tag "add", class: "translucent", "aria-hidden": true %>
   </button>
-  <dialog class="popup panel flex-column gap fill-white shadow txt-small margin-block-double" data-dialog-target="dialog">
+  <dialog class="popup panel flex-column gap-half fill-white shadow txt-small margin-block-double" data-dialog-target="dialog">
     <%= form_with model: [ collection, Column.new ], data: { controller: "form", action: "turbo:submit-end->dialog#close turbo:submit-end->form#reset" } do |form| %>
       <%= form.text_field :name, class: "input", placeholder: "Column name", required: true, autocomplete: "off" %>
       <%= form.submit "Add a column", class: "btn btn--link" %>

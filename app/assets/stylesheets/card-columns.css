@@ -189,10 +189,9 @@
     }
 
     .cards:not(.is-collapsed) & {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
       inline-size: 100%;
       margin-block-end: calc(-0.5 * var(--cards-gap));
+      justify-content: center;
 
       &:hover,
       &:has(~ .cards__expander-menu:hover) {
@@ -207,14 +206,13 @@
     inline-size: var(--column-width-collapsed);
 
     .cards:not(.is-collapsed) & {
-      opacity: 0;
+      display: none;
     }
   }
 
   .cards__expander-title {
     font-weight: inherit;
     font-size: inherit;
-    grid-column: 2;
     line-height: var(--column-width-collapsed);
 
     .cards.is-collapsed & {
@@ -466,7 +464,6 @@
       color: var(--card-text-color);
     }
 
-    /* The following groups the header and title on considering cards */
     .card__header {
       color: var(--color-ink);
       padding-block-start: calc(var(--card-padding-block) / 2);
@@ -480,16 +477,6 @@
     .card__body {
       padding-block: 0 var(--card-padding-block);
     }
-    /* End */
-
-    /* The Uncomment the following to add borders and such */
-    /*
-    .card__collection {
-      border-block-end: var(--card-border);
-      border-inline-end: var(--card-border);
-    }
-    */
-    /* End */
 
     .card--drafted {
       --card-color: var(--color-ink-medium) !important;
@@ -507,7 +494,6 @@
       min-block-size: 0;
     }
   }
-
 
   .card.card--new {
     --border-color: var(--color-selected-dark);
