@@ -5,6 +5,7 @@ class Collections::ColumnsController < ApplicationController
 
   def show
     set_page_and_extract_portion_from @column.cards.active.reverse_chronologically
+    fresh_when etag: [ @column, @page.records ]
   end
 
   def create

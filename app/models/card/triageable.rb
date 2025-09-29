@@ -2,7 +2,7 @@ module Card::Triageable
   extend ActiveSupport::Concern
 
   included do
-    belongs_to :column, optional: true
+    belongs_to :column, optional: true, touch: true
 
     scope :awaiting_triage, -> { active.where.missing(:column) }
     scope :triaged, -> { active.joins(:column) }
