@@ -38,8 +38,6 @@ gem "useragent", bc: "useragent"
 
 # Telemetry, logging, and operations
 gem "mission_control-jobs"
-gem "sentry-ruby"
-gem "sentry-rails"
 gem "yabeda"
 gem "yabeda-actioncable"
 gem "yabeda-activejob", github: "basecamp/yabeda-activejob", branch: "bulk-and-scheduled-jobs"

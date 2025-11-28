@@ -43,7 +43,7 @@ module RequestForgeryProtection
         Rails.logger.info "CSRF protection check: " + info.map { it.join(" ") }.join(", ")
 
         if (origin && token) != sec_fetch_site
-          Sentry.capture_message "CSRF protection mismatch", level: :info, extra: { info: info }
+          Sentry.try :capture_message, "CSRF protection mismatch", level: :info, extra: { info: info }
         end
       end
     end
