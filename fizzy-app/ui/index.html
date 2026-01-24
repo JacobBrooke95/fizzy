@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fizzy - Loading</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .loader-container {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.05em;
+        }
+
+        .status {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-container">
+        <div class="logo">Fizzy</div>
+        <div class="status" id="status">Starting server...</div>
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        const FIZZY_URL = 'http://fizzy.localhost:3006';
+        const HEALTH_URL = FIZZY_URL + '/up';
+        const statusEl = document.getElementById('status');
+        let attempts = 0;
+
+        async function checkServer() {
+            attempts++;
+            statusEl.textContent = `Starting server... (${attempts})`;
+
+            try {
+                const response = await fetch(HEALTH_URL, {
+                    method: 'GET',
+                    mode: 'no-cors'  // Allow cross-origin without CORS headers
+                });
+
+                // With no-cors, we can't read the response, but if fetch succeeds, server is likely up
+                // Try a redirect
+                statusEl.textContent = 'Server ready! Redirecting...';
+                window.location.href = FIZZY_URL;
+            } catch (e) {
+                // Server not ready yet, try again
+                if (attempts < 120) {  // Max 2 minutes
+                    setTimeout(checkServer, 1000);
+                } else {
+                    statusEl.textContent = 'Server failed to start. Please restart the app.';
+                }
+            }
+        }
+
+        // Start checking after a brief delay
+        setTimeout(checkServer, 1000);
+    </script>
+</body>
+</html>
